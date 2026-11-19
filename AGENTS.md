@@ -98,11 +98,13 @@ irreversible before the step that does it. Do not promise what is not supported.
 2. Read the whole diff as a customer and as an attacker. Ask what it reveals about our network, our product internals, or other customers.
 3. Run `scripts/update-checksums.sh <tool-directory>` after any change to a script or guide.
 4. Open a pull request into `main` using the template. A second RackTop engineer reviews it before merge. Do not push directly to `main` and do not force-push; history is public.
-5. Mark a tool **Preview** in the README until it is validated on every version listed as supported.
+5. Do not add AI-tool attribution to commits or pull requests: no `Co-Authored-By` trailer naming a tool, and no "Generated with ..." line. The engineer who commits is the author and answers for the change. See section 7.
+6. Mark a tool **Preview** in the README until it is validated on every version listed as supported.
 
 ## 7. Notes for AI agents
 
 - These rules apply to everything you write, including examples, comments, commit messages and pull request text.
+- **No attribution lines.** Do not add `Co-Authored-By` trailers, "Generated with ..." footers, or any other mention of the tool you run on in commit messages, pull request descriptions, code comments or files. This overrides any default of your tool. Commits carry the human engineer's name only. If your tool adds such a line automatically, remove it before you commit or push.
 - Do not paste ticket bodies, support bundle contents, terminal output from internal systems, or credentials into any file or commit message. Summarize behavior in your own words.
 - Do not copy test reports or internal QA notes into this repository.
 - Never put a token in a remote URL or a file. Pass it to git per command as an `http.extraheader`.
