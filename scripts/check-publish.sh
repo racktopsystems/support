@@ -28,6 +28,10 @@ scan "Internal systems and URLs" "$INTERNAL" -i
 scan "Possible secrets" "$SECRETS" -i
 scan "Possible serial numbers" "$SERIAL" -i
 
+# Commit messages: no co-author trailers from outside RackTop, no generated-with footers
+msgs=$(git log --format='%h %B' 2>/dev/null | grep -iE 'co-authored-by:.*|generated with' | grep -viE 'co-authored-by:.*@racktopsystems\.com')
+if [ -n "$msgs" ]; then printf '\n== Attribution lines in commit messages (remove them before pushing) ==\n%s\n' "$msgs"; fail=1; fi
+
 # Files that must never be committed
 bad=$(find . -path ./.git -prune -o -type f \( -name '*.pem' -o -name '*.key' -o -name '*.p12' -o -name '.env*' -o -name '*.log' -o -name 'settings.env' \) -print)
 [ -n "$bad" ] && { printf '\n== Key, credential or log files ==\n%s\n' "$bad"; fail=1; }
