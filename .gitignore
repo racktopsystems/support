@@ -1,0 +1,20 @@
+# Never commit key material, credentials or captured output
+*.pem
+*.key
+*.p12
+*.pfx
+*.csr
+*.crt
+*.tgz
+*.tar
+*.zip
+*.log
+*.env
+.env*
+settings.env
+transcript.log
+keys-before.json
+datasets-before.tsv
+sed-before.json
+*.bak
+.DS_Store
